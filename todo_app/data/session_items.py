@@ -51,7 +51,7 @@ def add_item(title):
     items.append(item)
     session['items'] = items
 
-    return item
+    return items
 
 
 def save_item(item):

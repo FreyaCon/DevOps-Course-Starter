@@ -19,11 +19,6 @@ def index():
     to_do_items = get_items()
     return render_template('index.html', to_do_items=to_do_items)
 
-#@app.route('/form', methods = ['POST', 'GET'])
-#def form():
-    #title = request.form['add-items']
-    #add_item(title)
-
 if __name__ == '__main__':
     app.run(debug=True)
 
