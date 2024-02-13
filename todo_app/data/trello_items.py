@@ -3,7 +3,8 @@ import requests
 
 api_key = os.getenv('TRELLO_API_KEY')
 api_token = os.getenv('TRELLO_API_TOKEN')
-board_id = os.getenv('BOARD_ID') 
+board_id = os.getenv('BOARD_ID')
+list_id = os.getenv('LIST_ID') 
 
 def get_items():
     """
@@ -47,7 +48,7 @@ def add_item(title, description):
         item: The saved item.
     """
     try:
-        requests.post(url = f"https://api.trello.com/1/cards?idList=65cb8e035ab1d39df3532134&key={api_key}&token={api_token}&name={title}&desc={description}")
+        requests.post(url = f"https://api.trello.com/1/cards?idList={list_id}&key={api_key}&token={api_token}&name={title}&desc={description}")
     except Exception as e:
         print(f"Adding new items failed: {e}")
 

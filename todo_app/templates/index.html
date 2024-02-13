@@ -12,7 +12,21 @@
       <h2>Items</h2>
       <ul class="list-group mb-4">
         {% for item in to_do_items %}
-        <li>ID:{{ item.idShort }} TITLE: {{ item.name }}, STATUS : {{list_helper[item.idList]}}, DESCRIPTION: {{item.desc}} </li>
+        <li>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <span>ID: {{ item.idShort }}</span> 
+              <span>TITLE: {{ item.name }}</span>
+              <span>STATUS: {{ list_helper[item.idList] }}</span>
+              <span>DESCRIPTION: {{ item.desc }}</span>
+            </div>
+            {% if list_helper[item.idList] == "Done" %}
+            <button class="btn btn-sm btn-primary">Mark Incomplete</button>
+            {% else %}
+            <button class="btn btn-sm btn-success">Mark Completed</button>
+            {% endif %}
+          </div>
+        </li>
         {% endfor %}
       </ul>
       <h2>Add New Item</h2>
