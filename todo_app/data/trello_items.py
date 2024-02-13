@@ -1,19 +1,25 @@
-from flask import session
+import os
+import requests
 
-_DEFAULT_ITEMS = [
-    { 'id': 1, 'status': 'Not Started', 'title': 'List saved todo items' },
-    { 'id': 2, 'status': 'Not Started', 'title': 'Allow new items to be added' }
-]
-
+api_key = os.getenv('TRELLO_API_KEY')
+api_token = os.getenv('TRELLO_API_TOKEN')
+board_id = os.getenv('BOARD_ID') 
 
 def get_items():
     """
-    Fetches all saved items from the session.
+    Fetches all saved items from the trello board.
 
     Returns:
         list: The list of saved items.
     """
-    return session.get('items', _DEFAULT_ITEMS.copy())
+    try:
+        response = requests.get(url = f"https://api.trello.com/1/boards/{board_id}/cards?key={api_key}&token={api_token}")
+        response.raise_for_status()
+        cards = response.json()
+        return cards
+    except Exception as e:
+        print(f"Getting items failed: {e}")
+    
 
 
 def get_item(id):
@@ -30,7 +36,7 @@ def get_item(id):
     return next((item for item in items if item['id'] == int(id)), None)
 
 
-def add_item(title):
+def add_item(title, description):
     """
     Adds a new item with the specified title to the session.
 
@@ -40,18 +46,10 @@ def add_item(title):
     Returns:
         item: The saved item.
     """
-    items = get_items()
-
-    # Determine the ID for the item based on that of the previously added item
-    id = items[-1]['id'] + 1 if items else 0
-
-    item = { 'id': id, 'title': title, 'status': 'Not Started' }
-
-    # Add the item to the list
-    items.append(item)
-    session['items'] = items
-
-    return item
+    try:
+        requests.post(url = f"https://api.trello.com/1/cards?idList=65cb8e035ab1d39df3532134&key={api_key}&token={api_token}&name={title}&desc={description}")
+    except Exception as e:
+        print(f"Adding new items failed: {e}")
 
 
 def save_item(item):
