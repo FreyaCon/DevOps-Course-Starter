@@ -1,4 +1,7 @@
+import os
+list_id_to_do = os.getenv('TO_DO_LIST_ID') 
+list_id_done = os.getenv('DONE_LIST_ID')
 
 LIST_ID ={
-    "65cb8e035ab1d39df3532134": "To do",
-    "65cb9484fe064787e8c2375a": "Done"}
+    list_id_to_do: "To do",
+    list_id_done: "Done"}

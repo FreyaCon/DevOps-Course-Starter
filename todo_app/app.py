@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from todo_app.data.trello_items import get_items, add_item
+from todo_app.helpers.trello_items import get_items, add_item, toggle_list
 import os
 import requests
 
@@ -21,7 +21,11 @@ def new_item():
     desc = request.form['add-desc']
     add_item(title, desc)
     return redirect(url_for('index'))
-    
+
+@app.route('/complete-item/<item_id>', methods=['GET'])
+def change_list(item_id):
+    toggle_list(item_id)
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

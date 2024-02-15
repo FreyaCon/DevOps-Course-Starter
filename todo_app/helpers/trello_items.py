@@ -4,7 +4,8 @@ import requests
 api_key = os.getenv('TRELLO_API_KEY')
 api_token = os.getenv('TRELLO_API_TOKEN')
 board_id = os.getenv('BOARD_ID')
-list_id = os.getenv('LIST_ID') 
+list_id_to_do = os.getenv('TO_DO_LIST_ID') 
+list_id_done = os.getenv('DONE_LIST_ID')
 
 def get_items():
     """
@@ -48,10 +49,15 @@ def add_item(title, description):
         item: The saved item.
     """
     try:
-        requests.post(url = f"https://api.trello.com/1/cards?idList={list_id}&key={api_key}&token={api_token}&name={title}&desc={description}")
+        requests.post(url = f"https://api.trello.com/1/cards?idList={list_id_to_do}&key={api_key}&token={api_token}&name={title}&desc={description}")
     except Exception as e:
         print(f"Adding new items failed: {e}")
 
+def toggle_list(id):
+    try:
+        requests.put(url = f"https://api.trello.com/1/cards/{id}?idList={list_id_done}&key={api_key}&token={api_token}")
+    except Exception as e:
+        print(f"Updating list items failed: {e}")
 
 def save_item(item):
     """
@@ -60,9 +66,6 @@ def save_item(item):
     Args:
         item: The item to save.
     """
-    existing_items = get_items()
-    updated_items = [item if item['id'] == existing_item['id'] else existing_item for existing_item in existing_items]
 
-    session['items'] = updated_items
 
     return item
