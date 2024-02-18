@@ -1,5 +1,6 @@
 import os
 import requests
+from .item_class_helper import Card_Item
 
 api_key = os.getenv('TRELLO_API_KEY')
 api_token = os.getenv('TRELLO_API_TOKEN')
@@ -18,10 +19,13 @@ def get_items():
         response = requests.get(url = f"https://api.trello.com/1/boards/{board_id}/cards?key={api_key}&token={api_token}")
         response.raise_for_status()
         cards = response.json()
-        return cards
+        to_do_items=[]
+        for card in cards:
+            item = Card_Item.from_trello_card(card)
+            to_do_items.append(item)
+        return to_do_items
     except Exception as e:
         print(f"Getting items failed: {e}")
-    
 
 
 def get_item(id):

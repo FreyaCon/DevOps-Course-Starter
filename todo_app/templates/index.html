@@ -15,13 +15,13 @@
         <li>
           <div class="d-flex justify-content-between align-items-center">
             <div>
-              <span>ID: {{ item.idShort }}</span> 
+              <span>ID: {{ item.id }}</span> 
               <span>TITLE: {{ item.name }}</span>
-              <span>STATUS: {{ list_helper[item.idList] }}</span>
-              <span>DESCRIPTION: {{ item.desc }}</span>
+              <span>STATUS: {{ item.status }}</span>
+              <span>DESCRIPTION: {{ item.description }}</span>
             </div>
-            {% if list_helper[item.idList] == "To do" %}     
-            <a class="btn btn-sm btn-success" href ="/complete-item/{{ item.id }}">Mark Completed</a>
+            {% if item.status == "To do" %}     
+            <a class="btn btn-sm btn-success" href ="/complete-item/{{ item.long_id }}">Mark Completed</a>
             {% endif %}
           </div>
         </li>
