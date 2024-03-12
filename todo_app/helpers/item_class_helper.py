@@ -1,4 +1,4 @@
-from .list_id_helper import LIST_ID
+from .list_id_helper import get_list_id_map
 
 class Card_Item:
     def __init__(self, id_short, long_id, name, description, status):
@@ -10,5 +10,5 @@ class Card_Item:
 
     @classmethod
     def from_trello_card(cls, card):
-        return cls(card['idShort'],card['id'], card['name'], card['desc'], LIST_ID[card['idList']])
+        return cls(card['idShort'],card['id'], card['name'], card['desc'], get_list_id_map()[card['idList']])
     

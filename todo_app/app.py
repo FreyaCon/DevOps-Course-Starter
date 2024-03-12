@@ -4,7 +4,6 @@ import os
 import requests
 
 from todo_app.flask_config import Config
-from todo_app.helpers.list_id_helper import LIST_ID
 
 app = Flask(__name__)
 app.config.from_object(Config())
@@ -12,7 +11,7 @@ app.config.from_object(Config())
 @app.route('/', methods = ['GET'])
 def index():
     cards = get_items()
-    return render_template('index.html', to_do_items=cards, list_helper = LIST_ID)
+    return render_template('index.html', to_do_items=cards)
    
 
 @app.route('/', methods=['POST'])
