@@ -1,0 +1,17 @@
+<test-run id="2" testcasecount="1" result="Passed" start-time="2024-03-18 12:44:28.618268" end-time="2024-03-18 12:44:28.707813" duration="0" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" clr-version="3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]" engine-version="3.6.2"><command-line>C:\Users\frecon\AppData\Local\Programs\Python\Python311\Scripts\pytest</command-line><filter /><test-suite id="todo_app/tests/test_view_model.py" name="todo_app/tests/test_view_model.py" fullname="todo_app/tests/test_view_model.py" methodname="" classname="" runstate="Runnable" type="Assembly" testcasecount="1" result="Passed" label="" start-time="2024-03-18 12:44:28.648716" end-time="2024-03-18 12:44:28.706813" duration="0.058097" asserts="0" total="1" passed="0" failed="1" warnings="0" inconclusive="0" skipped="0"><properties><property name="python_version" value="3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]" /></properties><test-case id="100" name="todo_app/tests/test_view_model.py::test_view_model_done_property" fullname="todo_app/tests/test_view_model.py::test_view_model_done_property" methodname="test_view_model_done_property" classname="todo_app/tests/test_view_model.py" runstate="Runnable" seed="1" result="Failed" label="" start-time="2024-03-18 12:44:28.648716" end-time="2024-03-18 12:44:28.706813" duration="0.058097" asserts="0"><properties><property name="python-version" value="3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]" /><property name="fspath" value="todo_app/tests/test_view_model.py" /></properties><environment framework-version="3.6.2" clr-version="3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]" os-version="10" platform="Windows" cwd="C:\Work\Devops\exercise2\DevOps-Course-Starter" machine-name="AMD64" user="" user-domain="" culture="en_GB" uiculture="en_GB" os-architecture="64bit" /><failure><message><![CDATA[def test_view_model_done_property():
+        # Arrange
+        card = Card_Item(1, 123, "something to do", "something to do", "TO DO")
+        card2 = Card_Item(2, 1234, "something to do aswell", "something to do", "DONE")
+        model = ViewModel([card, card2])
+    
+        # Act
+        done_items = model.done_items
+        print( done_items)
+    
+        # Assert
+&gt;       assert done_items == [card2]
+E       AssertionError: assert ['test'] == [&lt;todo_app.he...01B80A9C1E50&gt;]
+E         At index 0 diff: 'test' != &lt;todo_app.helpers.item_class_helper.Card_Item object at 0x000001B80A9C1E50&gt;
+E         Use -v to get more diff
+
+todo_app\tests\test_view_model.py:15: AssertionError]]></message><stack-trace><![CDATA[C:\Work\Devops\exercise2\DevOps-Course-Starter\todo_app\tests\test_view_model.py:15: AssertionError: assert ['test'] == [&lt;todo_app.he...01B80A9C1E50&gt;]]]></stack-trace></failure><reason><message><![CDATA[]]></message></reason><output><![CDATA[]]></output></test-case><environment framework-version="3.6.2" clr-version="3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]" os-version="10" platform="Windows" cwd="C:\Work\Devops\exercise2\DevOps-Course-Starter" machine-name="AMD64" user="" user-domain="" culture="en_GB" uiculture="en_GB" os-architecture="64bit" /></test-suite></test-run>
