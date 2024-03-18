@@ -6,28 +6,33 @@ import requests
 
 from todo_app.flask_config import Config
 
-app = Flask(__name__)
-app.config.from_object(Config())
 
-@app.route('/', methods = ['GET'])
-def index():
-    cards = get_items()
-    item_view_model = ViewModel(cards)
-    return render_template('index.html', view_model=item_view_model)
-   
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config())
 
-@app.route('/', methods=['POST'])
-def new_item():
-    title = request.form['add-items']
-    desc = request.form['add-desc']
-    add_item(title, desc)
-    return redirect(url_for('index'))
+    @app.route('/', methods = ['GET'])
+    def index():
+        cards = get_items()
+        item_view_model = ViewModel(cards)
+        return render_template('index.html', view_model=item_view_model)
+    
 
-@app.route('/complete-item/<item_id>', methods=['GET'])
-def change_list(item_id):
-    toggle_list(item_id)
-    return redirect(url_for('index'))
+    @app.route('/', methods=['POST'])
+    def new_item():
+        title = request.form['add-items']
+        desc = request.form['add-desc']
+        add_item(title, desc)
+        return redirect(url_for('index'))
 
+    @app.route('/complete-item/<item_id>', methods=['GET'])
+    def change_list(item_id):
+        toggle_list(item_id)
+        return redirect(url_for('index'))
+    
+    return app
+
+create_app()
 if __name__ == '__main__':
     app.run(debug=True)
 
