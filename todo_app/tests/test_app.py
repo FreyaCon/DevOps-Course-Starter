@@ -36,7 +36,7 @@ def stub_get(url, params={}):
     api_token = os.environ.get('TRELLO_API_TOKEN')
     list_id_to_do = os.getenv('TO_DO_LIST_ID')
     fake_response_data = None
-    if url == f'https://api.trello.com/1/boards/BOARD_ID/cards?key={api_key}&token={api_token}':
+    if url == f'https://api.trello.com/1/boards/{test_board_id}/cards?key={api_key}&token={api_token}':
         fake_response_data = [{'idShort': 1, 'id': 123, 'name':"test",'desc': "test",'idList': list_id_to_do}]
         return StubResponse(fake_response_data)
 
