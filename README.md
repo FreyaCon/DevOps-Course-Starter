@@ -60,5 +60,5 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 
 # Running the Unit Tests
 
-To run all the unit tests run the command `pytest` in the terminal.
-To run tests in a module run the command `pytest path\to\test`.
+To run all the unit tests run the command `poetry run pytest` in the terminal.
+To run tests in a module run the command `poetry run pytest path\to\test`.
