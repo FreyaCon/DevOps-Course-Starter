@@ -2,8 +2,7 @@ import os
 import requests
 from .item_class_helper import Card_Item
 
-api_key = os.getenv('TRELLO_API_KEY')
-api_token = os.getenv('TRELLO_API_TOKEN')
+
 
 def get_items():
     """
@@ -12,6 +11,8 @@ def get_items():
     Returns:
         list: The list of saved items.
     """
+    api_key = os.getenv('TRELLO_API_KEY')
+    api_token = os.getenv('TRELLO_API_TOKEN')
     try:
         response = requests.get(url = f"https://api.trello.com/1/boards/{os.getenv('BOARD_ID')}/cards?key={api_key}&token={api_token}")
         response.raise_for_status()
@@ -50,12 +51,16 @@ def add_item(title, description):
     Returns:
         item: The saved item.
     """
+    api_key = os.getenv('TRELLO_API_KEY')
+    api_token = os.getenv('TRELLO_API_TOKEN')
     try:
         requests.post(url = f"https://api.trello.com/1/cards?idList={os.getenv('TO_DO_LIST_ID')}&key={api_key}&token={api_token}&name={title}&desc={description}")
     except Exception as e:
         print(f"Adding new items failed: {e}")
 
 def toggle_list(id):
+    api_key = os.getenv('TRELLO_API_KEY')
+    api_token = os.getenv('TRELLO_API_TOKEN')
     try:
         requests.put(url = f"https://api.trello.com/1/cards/{id}?idList={os.getenv('DONE_LIST_ID')}&key={api_key}&token={api_token}")
     except Exception as e:
@@ -68,6 +73,5 @@ def save_item(item):
     Args:
         item: The item to save.
     """
-
 
     return item
