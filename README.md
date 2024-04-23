@@ -62,3 +62,18 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 
 To run all the unit tests run the command `poetry run pytest` in the terminal.
 To run tests in a module run the command `poetry run pytest path\to\test`.
+
+# Provision a VM from an Ansible Control Node
+
+## prerequisites
+
+Ensure the following prerequisites are met:
+
+- Ansible is installed and configured on the control node.
+- Necessary permissions and credentials to access the VM.
+
+## steps
+
+1. Copy the files in the ansible folder into the control node
+2. Run the ansible playbook by running `ansible-playbook playbook.yml -i inventory.ini`
+3. Go to http://18.134.222.201:5000/ to see the app
