@@ -77,3 +77,15 @@ Ensure the following prerequisites are met:
 1. Copy the files in the ansible folder into the control node
 2. Run the ansible playbook by running `ansible-playbook playbook.yml -i inventory.ini`
 3. Go to http://18.134.222.201:5000/ to see the app
+
+# Running in Docker
+
+To run the app in docker you need docker desktop installed.
+
+Development app run:
+1. `docker build --target development --tag todo-app:dev  .`
+2. `docker run --env-file .env --publish 5000:5000 --mount type=bind,source="$(pwd)/todo_app",target=/todo_app todo-app:dev`
+
+Production app run:
+1. `docker build --target development --tag todo-app:prod  .`
+2. `docker run --env-file .env --publish 5000:5000 todo-app:prod`
