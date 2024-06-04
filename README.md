@@ -87,5 +87,5 @@ Development app run:
 2. `docker run --env-file .env --publish 5000:5000 --mount type=bind,source="$(pwd)/todo_app",target=/todo_app todo-app:dev`
 
 Production app run:
-1. `docker build --target development --tag todo-app:prod  .`
+1. `docker build --target production --tag todo-app:prod  .`
 2. `docker run --env-file .env --publish 5000:5000 todo-app:prod`
