@@ -84,7 +84,7 @@ To run the app in docker you need docker desktop installed.
 
 Development app run:
 1. `docker build --target development --tag todo-app:dev  .`
-2. `docker run --env-file .env --publish 5000:5000 --mount type=bind,source="$(pwd)/todo_app",target=/todo_app todo-app:dev`
+2. `docker run --env-file .env --publish 5000:5000 --mount type=bind,source="$(pwd)/todo_app",target=/todo_app/todo_app todo-app:dev`
 
 Production app run:
 1. `docker build --target production --tag todo-app:prod  .`
