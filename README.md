@@ -81,6 +81,9 @@ Ensure the following prerequisites are met:
 # Running in Docker
 
 To run the app in docker you need docker desktop installed.
+Run unit tests:
+1. `docker build --target test -t todo_app:test .`
+2. `docker run --rm todo_app:test`
 
 Development app run:
 1. `docker build --target development --tag todo-app:dev  .`
