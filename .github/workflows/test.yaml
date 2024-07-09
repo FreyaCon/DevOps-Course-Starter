@@ -5,12 +5,13 @@ jobs:
   build:
     name: Build and test
     runs-on: ubuntu-latest
+
     steps:
     - name: checkout repo code
-    - uses: actions/checkout@v4
+      uses: actions/checkout@v4
 
     - name: build docker
-    - run: docker build --target test -t todo_app:test .
+      run: docker build --target test -t todo_app:test .
 
     - name: run docker
-    - run: docker run --rm todo_app:test
+      run: docker run --rm todo_app:test
