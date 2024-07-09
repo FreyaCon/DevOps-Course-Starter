@@ -8,6 +8,13 @@ RUN poetry install --no-root
 
 EXPOSE 5000
 
+# tests
+FROM base AS test
+ENV FLASK_APP=todo_app
+ENV FLASK_DEBUG=true
+COPY . /todo_app
+ENTRYPOINT poetry run pytest
+
 # dev
 FROM base AS development
 ENV FLASK_APP=todo_app
