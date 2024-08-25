@@ -4,7 +4,7 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 ENV PATH="/root/.local/bin:${PATH}"
 WORKDIR /todo_app
 COPY poetry.toml pyproject.toml poetry.lock ./
-RUN poetry install --no-root
+RUN poetry config virtualenvs.create false --local && poetry install --no-root
 
 EXPOSE 5000
 
