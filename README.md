@@ -101,6 +101,6 @@ The deployed site can be found at https://freya-to-do-2.azurewebsites.net/. It i
 
 To deploy a new version of the app you must run:
 1. `docker login`
-2. `docker build --target production --tag todo-app:prod  .`
+2. `docker build --target production --tag nanofrecon/todo-app:prod  .`
 3. `docker push nanofrecon/todo-app:prod`
 The azure web app might take some mins to update.
